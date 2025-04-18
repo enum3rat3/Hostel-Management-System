@@ -1,0 +1,39 @@
+---
+# User Microservice Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-microservice-deployment
+  template:
+    metadata:
+      labels:
+        app: user-microservice-deployment
+    spec:
+      containers:
+        - name: user-microservice-container
+          image: enum3rat3/user-service
+          env:
+            - name: CONFIG_URL
+              value: http://config-microservice-service:8888 
+            - name: USER_DB
+              value: mysql-user # mysql user service name
+          ports:
+            - containerPort: 5002
+---
+# User Microservice Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-microservice-service
+spec:
+  type: ClusterIP
+  selector:
+    app: user-microservice-deployment
+  ports:
+    - port: 5002
+      targetPort: 5002

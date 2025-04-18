@@ -1,0 +1,23 @@
+.floor-main{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    flex-wrap: wrap;
+    padding:10px;
+    color: white;
+
+
+}
+
+.floor-name{
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+}
+
+.inside-floor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:10px;
+}

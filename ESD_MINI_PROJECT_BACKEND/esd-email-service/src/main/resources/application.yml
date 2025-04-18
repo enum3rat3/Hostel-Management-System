@@ -1,0 +1,27 @@
+server:
+  port: 5003
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: ${KAFKA_EMAIL}:9092
+      auto-offset-reset: earliest
+      group-id: HostelAllocationGroup,HostelVacantGroup
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: parmarjainu25@gmail.com
+    password: otqq uikx nqpj wzjr
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

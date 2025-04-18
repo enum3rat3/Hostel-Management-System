@@ -1,0 +1,37 @@
+---
+# Email Microservice Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email-microservice-deployment
+  template:
+    metadata:
+      labels:
+        app: email-microservice-deployment
+    spec:
+      containers:
+        - name: email-microservice-container
+          image: enum3rat3/email-service
+          env:
+            - name: KAFKA_EMAIL
+              value: kafka-service
+          ports:
+            - containerPort: 5003
+---
+# email Microservice Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: email-microservice-service
+spec:
+  type: ClusterIP
+  selector:
+    app: email-microservice-deployment
+  ports:
+    - port: 5003
+      targetPort: 5003

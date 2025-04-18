@@ -1,0 +1,52 @@
+.filter-main{
+    display: flex;
+    flex-direction: column;
+    color:white;
+}
+
+.heading{
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.name-menu{
+    width: 100%;
+    padding: 15px;
+}
+.floor-menu{
+    width: 100%;
+    padding: 15px;
+}
+
+.avail_alloc{
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.avail-menu{
+    width: 100%;
+    padding: 15px;
+}
+
+.btn{
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-transform: uppercase;
+}

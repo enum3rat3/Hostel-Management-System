@@ -1,0 +1,62 @@
+---
+# Gateway Microservice Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway-microservice-deployment
+  template:
+    metadata:
+      labels:
+        app: gateway-microservice-deployment
+    spec:
+      containers:
+        - name: gateway-microservice-container
+          image: enum3rat3/gateway-server
+          env:
+            - name: CONFIG_URL
+              value: http://config-microservice-service:8888
+            - name: USER_SERVICE_URL
+              value: http://user-microservice-service:5002 # user microservice service name
+            - name: HOSTEL_SERVICE_URL
+              value: http://hostel-microservice-service:5001 # hostel microservice service name
+          ports:
+            - containerPort: 5004
+---
+# Gateway Microservice Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-microservice-service
+spec:
+  type: ClusterIP
+  selector:
+    app: gateway-microservice-deployment
+  ports:
+    - port: 5004
+      targetPort: 5004
+
+--- 
+# Gateway Microservice ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: api-gateway.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway-microservice-service
+                port:
+                  number: 5004

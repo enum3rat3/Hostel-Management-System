@@ -1,0 +1,72 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: react-env-config
+data:
+  env.js: |
+    window._env_ = {
+      REACT_APP_API_URL: "http://gateway-microservice-service:5004"
+    };
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-frontend
+  template:
+    metadata:
+      labels:
+        app: react-frontend
+    spec:
+      containers:
+        - name: react-frontend
+          image: enum3rat3/frontend-service:latest
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: env-volume
+              mountPath: /app/build/env.js
+              subPath: env.js
+      volumes:
+        - name: env-volume
+          configMap:
+            name: react-env-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-frontend-service
+spec:
+  selector:
+    app: react-frontend
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: ClusterIP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: react-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: iiitb-hostel.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: react-frontend-service
+                port:
+                  number: 80
+
+

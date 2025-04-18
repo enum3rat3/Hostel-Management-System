@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: USER-SERVICE
+  config:
+    import: optional:configserver:${CONFIG_URL}

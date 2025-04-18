@@ -1,0 +1,7 @@
+feignClient:
+  service-name: ${USER_SERVICE}
+spring:
+  application:
+    name: HOSTEL-SERVICE
+  config:
+    import: optional:configserver:${CONFIG_URL}

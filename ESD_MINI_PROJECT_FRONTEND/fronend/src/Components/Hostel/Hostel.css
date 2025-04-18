@@ -1,0 +1,28 @@
+.hostel-main{
+    display: flex;
+    flex-direction: column;    
+    padding:10px;
+    color: white;
+    border: 3px solid white;
+    border-radius: 10px;
+
+
+}
+
+.hostel-name{
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+}
+
+.inside-hostel-main{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap:10px;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: 20px;
+}

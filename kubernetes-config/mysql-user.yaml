@@ -1,0 +1,70 @@
+---
+# User Persistent Volume
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-user-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/mysql-user
+
+---
+# User Persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-user-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+# User Deployment
+# ln -s /var/lib/mysql/mysql.sock /var/run/mysqld/mysqld.sock
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-user
+spec:
+  selector:
+    matchLabels:
+      app: mysql-user
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mysql-user
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-user-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-user-storage
+          persistentVolumeClaim:
+            claimName: mysql-user-pvc
+---
+# User Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-user
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: mysql-user

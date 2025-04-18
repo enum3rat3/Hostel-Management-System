@@ -1,0 +1,69 @@
+---
+# Hostel Persistent Volume
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-hostel-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/mysql-hostel
+
+---
+# Hostel Persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-hostel-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+# Hostel Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-hostel
+spec:
+  selector:
+    matchLabels:
+      app: mysql-hostel
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mysql-hostel
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-hostel-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-hostel-storage
+          persistentVolumeClaim:
+            claimName: mysql-hostel-pvc
+---
+# Hostel Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-hostel
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: mysql-hostel

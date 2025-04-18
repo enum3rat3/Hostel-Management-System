@@ -1,0 +1,31 @@
+.main{
+
+    width: 100vw;
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position:sticky;
+    background:linear-gradient(100deg,black,gray);
+    color: white;
+    box-shadow: 0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+
+.left-panel{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-panel{
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}

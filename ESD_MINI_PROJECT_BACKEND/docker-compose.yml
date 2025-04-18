@@ -1,0 +1,125 @@
+
+services:
+#    eureka-service:
+#      image: eureka-service
+#      build:
+#        context: ./Eureka_Server
+#      ports:
+#        - "8070:8070"
+#      networks:
+#        - microservices-net
+#      restart: unless-stopped
+#
+#    gateway-service:
+#      image: gateway-service
+#      build:
+#        context: ./Gateway
+#      ports:
+#        - "5000:5000"
+#      networks:
+#        - microservices-net
+#      depends_on:
+#        - eureka-service
+#      restart: unless-stopped
+#
+#    user-service:
+#      image: user-service
+#      build:
+#        context: ./esd_user_service
+#      ports:
+#        - "5001:5001"
+#      networks:
+#        - microservices-net
+#      depends_on:
+#        - postgresql
+#        - eureka-service
+#      restart: unless-stopped
+#
+#    hostel-service:
+#      image: hostel-service
+#      build:
+#        context: ./esd_hostel_service
+#      ports:
+#        - "5002:5002"
+#      networks:
+#        - microservices-net
+#      depends_on:
+#        - postgresql
+#        - eureka-service
+#      restart: unless-stopped
+#
+  postgresql:
+    container_name: ms_pg_sql
+    image: postgres
+    environment:
+      POSTGRES_USER: speproject
+      POSTGRES_PASSWORD: speproject
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5430:5432"
+    networks:
+      - microservices-net
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: ms_pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - microservices-net
+    restart: unless-stopped
+
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "22181:2181"
+    networks:
+      - microservices-net
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: ms_kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    links:
+      - zookeeper:zookeeper
+    environment:
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+    networks:
+      - microservices-net
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:

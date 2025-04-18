@@ -1,0 +1,36 @@
+.card-list-main{
+
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    flex-wrap: wrap;
+    padding:10px;
+}
+
+.legend{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+   
+}
+.inside-legend{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.blue_legend{
+    height: 15px;
+    width: 15px;
+    background-color: aquamarine;
+    margin: 2px;
+}
+
+.red_legend{
+    height: 15px;
+    width: 15px;
+    background-color: red;
+    margin: 2px;
+}

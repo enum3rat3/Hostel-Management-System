@@ -1,0 +1,43 @@
+---
+# Hostel Microservice Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostel-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hostel-microservice-deployment
+  template:
+    metadata:
+      labels:
+        app: hostel-microservice-deployment
+    spec:
+      containers:
+        - name: hostel-microservice-container
+          image: enum3rat3/hostel-service
+          env:
+            - name: CONFIG_URL
+              value: http://config-microservice-service:8888
+            - name: HOSTEL_DB
+              value: mysql-hostel # mysql hostel service name
+            - name: KAFKA_EMAIL
+              value: kafka-service
+            - name: USER_SERVICE
+              value: user-microservice-service
+          ports:
+            - containerPort: 5001
+---
+# Hostel Microservice Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: hostel-microservice-service
+spec:
+  type: ClusterIP
+  selector:
+    app: hostel-microservice-deployment
+  ports:
+    - port: 5001
+      targetPort: 5001

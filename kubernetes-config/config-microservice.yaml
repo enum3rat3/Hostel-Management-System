@@ -1,0 +1,37 @@
+---
+# Config Microservice Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-microservice-deployment
+  template:
+    metadata:
+      labels:
+        app: config-microservice-deployment
+    spec:
+      containers:
+        - name: config-microservice-container
+          image: enum3rat3/config-server
+          env:
+            - name: GITHUB_URI
+              value: https://github.com/jainishParmar/spe-project-micro-service-configuration # github url
+          ports:
+            - containerPort: 8888
+---
+# Config Microservice Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-microservice-service
+spec:
+  type: ClusterIP
+  selector:
+    app: config-microservice-deployment
+  ports:
+    - port: 8888
+      targetPort: 8888
