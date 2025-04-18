@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="" />
+    <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esd-email-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/esd-email-service/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -219,6 +222,7 @@
       <workItem from="1744901656370" duration="2473000" />
       <workItem from="1744908504885" duration="7071000" />
       <workItem from="1744950481012" duration="5972000" />
+      <workItem from="1744964170761" duration="2033000" />
     </task>
     <servers />
   </component>
