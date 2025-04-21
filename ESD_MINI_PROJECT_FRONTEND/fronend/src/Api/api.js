@@ -4,10 +4,10 @@ export const BASE_URL = "http://api-gateway.local";
 
 export const api = axios.create({
     baseURL: BASE_URL,
+    withCredentials: true,
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
     },
   });
 

@@ -26,6 +26,12 @@ spec:
               value: http://hostel-microservice-service:5001 # hostel microservice service name
           ports:
             - containerPort: 5004
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 5004
+            initialDelaySeconds: 5
+            periodSeconds: 10
 ---
 # Gateway Microservice Service
 apiVersion: v1
