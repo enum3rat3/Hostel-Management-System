@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd-email-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/esd-email-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_hostel_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/esd_hostel_service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_user_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -235,7 +227,7 @@
       <workItem from="1745301740560" duration="688000" />
       <workItem from="1745754353290" duration="105000" />
       <workItem from="1745908270531" duration="6289000" />
-      <workItem from="1745928364906" duration="3577000" />
+      <workItem from="1745928364906" duration="4190000" />
     </task>
     <servers />
   </component>
