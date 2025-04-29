@@ -1,0 +1,20 @@
+## OWASP ZAP
+mvn org.owasp:dependency-check-maven:check
+
+## Trivy
+# Scan Source Code
+trivy fs . --scanners vuln,secret
+
+# Scan Docker Image
+trivy image <image-name>
+
+# Scan Kubernetes YAML file
+trivy config ./kubernetes-config/
+
+## SonarQube
+
+# Run Docker Image
+docker run -d --name sonarqube -p 9001:9000 -v sonarqube_data:/opt/sonarqube/data -v sonarqube_extensions:/opt/sonarqube/extensions -v sonarqube_logs:/opt/sonarqube/logs sonarqube:latest
+
+# Run Test
+mvn clean verify -DskipTests=true sonar:sonar -Dsonar.login=<token> -Dsonar.projectKey=<project-key> -Dsonar.host.url=http://localhost:9001

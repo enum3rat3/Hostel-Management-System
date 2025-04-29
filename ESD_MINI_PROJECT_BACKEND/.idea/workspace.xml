@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/esd-email-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/esd-email-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/esd_hostel_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/esd_hostel_service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/esd_user_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESD_MINI_PROJECT_FRONTEND/fronend/src/Api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ESD_MINI_PROJECT_FRONTEND/fronend/src/Api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kubernetes-config/gateway-microservice.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../kubernetes-config/gateway-microservice.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,11 +230,34 @@
       <workItem from="1744964170761" duration="2033000" />
       <workItem from="1744976978794" duration="2856000" />
       <workItem from="1745217528627" duration="445000" />
-      <workItem from="1745248829975" duration="3517000" />
+      <workItem from="1745248829975" duration="4827000" />
+      <workItem from="1745292257553" duration="756000" />
+      <workItem from="1745301740560" duration="688000" />
+      <workItem from="1745754353290" duration="105000" />
+      <workItem from="1745908270531" duration="6289000" />
+      <workItem from="1745928364906" duration="3577000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.kafka:kafka_2.13" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
   </component>
 </project>
