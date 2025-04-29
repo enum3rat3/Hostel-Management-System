@@ -13,11 +13,12 @@ pipeline{
     stages{
 	stage('OWASP Dependency-Check Vulnerabilities'){
 	   steps{
-	  	dependencyCheck additionalArguments: ''' 
+		dependencyCheck additionalArguments: ''' 
                     -o './ESD_MINI_PROJECT_BACKEND/Gateway/'
-                    -s './ESD_MINI_PROJECT_BACKEND/Gateway/pom.xml'
+                    -s './ESD_MINI_PROJECT_BACKEND/Gateway/'
                     -f 'HTML' 
-                    --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+                    --prettyPrint 
+                    -Dlog.level=debug''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
 	  }	
 	}
 
