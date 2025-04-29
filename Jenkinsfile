@@ -8,8 +8,6 @@ pipeline{
         HOSTEL_IMAGE = 'enum3rat3/hostel-service:latest'
         EMAIL_IMAGE = 'enum3rat3/email-service:latest'
         FRONTEND_IMAGE = 'enum3rat3/frontend-service:latest'
-        SONAR_HOST_URL = 'http://localhost:9000'
-        SONAR_TOKEN = credentials('sonar-token-id')
     }
 
     stages{
