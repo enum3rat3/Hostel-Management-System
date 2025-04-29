@@ -11,6 +11,18 @@ pipeline{
     }
 
     stages{
+	stage('OWASP Dependency-Check Vulnerabilities'){
+	   steps{
+	  	dependencyCheck additionalArguments: ''' 
+                    -o './'
+                    -s './ESD_MINI_PROJECT_BACKEND/Gateway/'
+                    -f 'HTML' 
+                    --prettyPrint
+		    --report-file 'gateway_microservice_report.html'
+			''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+	  }	
+	}
+
 	stage('Build Docker Image') {
 	   steps{
 	     script{
