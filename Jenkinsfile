@@ -11,19 +11,10 @@ pipeline{
     }
 
     stages{
-        stage('checkout') {
-            steps{
-                script{
-                    git branch: 'main', url:'https://github.com/enum3rat3/Software-Production-Engineering.git'
-                }
-            }
-        }
 		stage('Build Docker Image') {
 			steps{
 				script{
-                    sh '''
-                        docker build -t $GATEWAY_IMAGE ./ESD_MINI_PROJECT_BACKEND/Gateway/
-                    '''
+                    docker.build($GATEWAY_IMAGE, './ESD_MINI_PROJECT_BACKEND/Gateway/')
 				}
 			}
 		}
