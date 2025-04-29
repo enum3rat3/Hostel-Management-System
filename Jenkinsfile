@@ -10,7 +10,9 @@ pipeline{
             }
         }
         stage('connection-check'){
+            sh"""
             echo 'connection check'
+            """
         }
     }
 }
