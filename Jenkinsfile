@@ -14,7 +14,7 @@ pipeline{
 		stage('Build Docker Image') {
 			steps{
 				script{
-                    docker.build(${GATEWAY_IMAGE}, '-f ./ESD_MINI_PROJECT_BACKEND/Gateway/ .')
+                    docker.build("${GATEWAY_IMAGE}", '-f ./ESD_MINI_PROJECT_BACKEND/Gateway/ .')
 				}
 			}
 		}
