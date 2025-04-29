@@ -10,9 +10,9 @@ pipeline{
             }
         }
         stage('connection-check'){
-            sh"""
-            echo 'connection check'
-            """
+            steps {
+                echo 'connection-check'
+            }
         }
     }
 }
