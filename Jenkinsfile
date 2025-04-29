@@ -18,7 +18,7 @@ pipeline{
                     -s './ESD_MINI_PROJECT_BACKEND/Gateway/'
                     -f 'HTML' 
                     --prettyPrint 
-                    -Dlog.level=debug''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+                    ''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
 	  }	
 	}
 
