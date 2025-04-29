@@ -17,9 +17,7 @@ pipeline{
                     -o './'
                     -s './ESD_MINI_PROJECT_BACKEND/Gateway/'
                     -f 'HTML' 
-                    --prettyPrint
-		    --report-file 'gateway_microservice_report.html'
-			''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+                    --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
 	  }	
 	}
 
