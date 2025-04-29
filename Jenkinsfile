@@ -15,7 +15,7 @@ pipeline{
 	   steps{
 	  	dependencyCheck additionalArguments: ''' 
                     -o './ESD_MINI_PROJECT_BACKEND/Gateway/'
-                    -s './ESD_MINI_PROJECT_BACKEND/Gateway/*'
+                    -s './ESD_MINI_PROJECT_BACKEND/Gateway/pom.xml'
                     -f 'HTML' 
                     --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
 	  }	
