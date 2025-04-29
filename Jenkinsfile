@@ -3,7 +3,7 @@ pipeline{
 
     environment {
         CONFIG_IMAGE = 'enum3rat3/config-server:latest'
-        GATEWAY_IMAGE = 'enum3rat3/gateway-server:latest'
+        GATEWAY_IMAGE = 'enum3rat3/gateway-server'
         USER_IMAGE = 'enum3rat3/user-service:latest'
         HOSTEL_IMAGE = 'enum3rat3/hostel-service:latest'
         EMAIL_IMAGE = 'enum3rat3/email-service:latest'
