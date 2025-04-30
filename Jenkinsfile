@@ -52,6 +52,20 @@ pipeline{
 	   }
 	}
 
+	stage('Trivy Scan: Image Analysis'){
+	  steps{
+	    script{
+	    	sh '''
+		  trivy image ${GATEWAY_IMAGE}
+		  trivy image ${CONFIG_IMAGE}
+		  trivy image ${USER_IMAGE}
+		  trivy image ${HOSTEL_IMAGE}
+		  trivy image ${EMAIL_IMAGE}
+		'''
+	    }
+	  }
+	}
+
 	stage('Push Docker Image'){
 	  steps{
 	    script{
