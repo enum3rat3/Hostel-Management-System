@@ -15,7 +15,6 @@ pipeline{
 	   steps{
 	     sh '''
 		 cd ./ESD_MINI_PROJECT_BACKEND/Gateway/ && mvn org.owasp:dependency-check-maven:check'
-	         echo $PWD
 		 cd ../config-server/ && mvn org.owasp:dependency-check-maven:check'
 	         cd ../esd_user_service && mvn org.owasp:dependency-check-maven:check'
 	         cd ../esd_hostel_service && mvn org.owasp:dependency-check-maven:check'
