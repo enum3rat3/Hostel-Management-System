@@ -56,11 +56,11 @@ pipeline{
 	  steps{
 	    script{
 	    	sh '''
-		  trivy image enum3rat3\/config-server:latest
-		  trivy image enum3rat3\/gateway-server:latest
-		  trivy image enum3rat3\/user-service:latest
-		  trivy image enum3rat3\/hostel-service:latest
-		  trivy image enum3rat3\/email-service:latest
+		  trivy image 'enum3rat3/config-server:latest'
+		  trivy image 'enum3rat3/gateway-server:latest'
+		  trivy image 'enum3rat3/user-service:latest'
+		  trivy image 'enum3rat3/hostel-service:latest'
+		  trivy image 'enum3rat3/email-service:latest'
 		'''
 	    }
 	  }
