@@ -23,6 +23,16 @@ pipeline{
 		'''
 	  }	
 	}
+	
+	stage("SonarQube analysis") {
+            agent any
+            steps {
+              withSonarQubeEnv('SonarQube-Check') {
+                    sh '''cd ./ESD_MINI_PROJECT_BACKEND/config-server/ && mvn clean verify -DskipTests=true sonar:sonar -Dsonar.projectKey=config-microservice -Dsonar.host.url=http://localhost:9001'''
+                    echo 'SonarQube Analysis Completed'
+                }
+           }
+        }
 
 	stage('Build Docker Image') {
 	   steps{
