@@ -25,11 +25,16 @@ pipeline{
 	}
 	
 	stage("SonarQube analysis") {
-            agent any
             steps {
               withSonarQubeEnv('SonarQube-Check') {
-                    sh '''cd ./ESD_MINI_PROJECT_BACKEND/config-server/ && mvn clean verify -DskipTests=true sonar:sonar -Dsonar.projectKey=config-microservice -Dsonar.host.url=http://localhost:9001'''
-                    echo 'SonarQube Analysis Completed'
+                    sh '''
+			cd ./ESD_MINI_PROJECT_BACKEND/config-server/ && mvn clean verify -DskipTests=true sonar:sonar -Dsonar.projectKey=config-microservice -Dsonar.host.url=http://localhost:9001
+			cd ../Gateway/ && mvn clean verify -DskipTests=true sonar:sonar -Dsonar.projectKey=gateway-microservice -Dsonar.host.url=http://localhost:9001
+			cd ../esd_user_service && mvn clean verify -DskipTests=true sonar:sonar -Dsonar.projectKey=user-microservice -Dsonar.host.url=http://localhost:9001
+			cd ../esd_hostel_service/ && mvn clean verify -DskipTests=true sonar:sonar -Dsonar.projectKey=hostel-microservice -Dsonar.host.url=http://localhost:9001
+			cd ../esd-email-service/ && mvn clean verify -DskipTests=true sonar:sonar -Dsonar.projectKey=email-microservice -Dsonar.host.url=http://localhost:9001
+			cd ../../
+		      '''	
                 }
            }
         }
