@@ -56,11 +56,11 @@ pipeline{
 	  steps{
 	    script{
 	    	sh '''
-		  trivy image ${GATEWAY_IMAGE}
-		  trivy image ${CONFIG_IMAGE}
-		  trivy image ${USER_IMAGE}
-		  trivy image ${HOSTEL_IMAGE}
-		  trivy image ${EMAIL_IMAGE}
+		  trivy image '${GATEWAY_IMAGE}:latest'
+		  trivy image '${CONFIG_IMAGE}:latest'
+		  trivy image '${USER_IMAGE}:latest'
+		  trivy image '${HOSTEL_IMAGE}:latest'
+		  trivy image '${EMAIL_IMAGE}:latest'
 		'''
 	    }
 	  }
