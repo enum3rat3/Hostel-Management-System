@@ -55,9 +55,8 @@ pipeline{
 	stage('Trivy Scan: Image Analysis'){
 	  steps{
 	    script{
-			        def trivyOutput = sh(script: "trivy image enum3rat3/config-server:latest", returnStdout: true).trim()
-                    println trivyOutput
-	    }
+	            sh'''trivy image enum3rat3/config-server:latest'''
+      	    }
 	  }
 	}
 
