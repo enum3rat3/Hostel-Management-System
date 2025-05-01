@@ -52,14 +52,6 @@ pipeline{
 	//    }
 	// }
 
-	stage('Trivy Scan: Image Analysis'){
-	  steps{
-	    script{
-	            sh'''trivy image enum3rat3/config-server:latest'''
-      	    }
-	  }
-	}
-
 	// stage('Push Docker Image'){
 	//   steps{
 	//     script{
@@ -74,5 +66,13 @@ pipeline{
 	//    }
 	// }
     //  }
+
+	stage('Scan Kubernetes YAML Files with Trivy'){
+	 steps{
+	   sh '''
+	    trivy config ./kubernetes-config/	
+	   '''
+      }
+    }
   }
 }
