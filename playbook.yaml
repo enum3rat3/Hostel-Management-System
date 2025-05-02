@@ -3,14 +3,5 @@
   hosts: localhost
   gather_facts: false
   tasks:
-    - name: Apply all Kubernetes YAML files in a directory
-      ansible.builtin.find:
-        paths: "./kubernetes-config/"
-        patterns: "*.yaml"
-        recurse: yes
-      register: yaml_files
-
-    - name: Apply Kubernetes files using kubectl
-      ansible.builtin.shell: "kubectl apply -f {{ item.path }}"
-      loop: "{{ yaml_files.files }}"
-      when: yaml_files.matched > 0
+    - name: Check if kubectl is installed
+      command: kubectl version --client --short
