@@ -2,10 +2,9 @@
 - name: Apply Kubernetes YAML files locally
   hosts: localhost
   gather_facts: false
-  become_user: jaimin
-  become_method: sudo
-  become_flags: "-u jaimin"
+  become: true
   vars:
+    ansible_become_user: jaimin
     ansible_become_password: "Jaimin@@0822"
   tasks:
     - name: Check current user
@@ -15,15 +14,3 @@
     - name: Display the current user
       debug:
         var: current_user.stdout
-    
-    - name: Apply all Kubernetes YAML files in a directory
-      ansible.builtin.find:
-        paths: "./kubernetes-config/"
-        patterns: "*.yaml"
-        recurse: yes
-      register: yaml_files
-
-    - name: Apply Kubernetes files using kubectl
-      ansible.builtin.shell: "kubectl apply -f {{ item.path }} --kubeconfig=/home/jaimin/.kube/config"
-      loop: "{{ yaml_files.files }}"
-      when: yaml_files.matched > 0
