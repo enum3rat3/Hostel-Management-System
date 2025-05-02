@@ -8,6 +8,14 @@
   vars:
     ansible_become_password: "Jaimin@@0822"
   tasks:
+    - name: Check current user
+      command: whoami
+      register: current_user
+
+    - name: Display the current user
+      debug:
+        var: current_user.stdout
+    
     - name: Apply all Kubernetes YAML files in a directory
       ansible.builtin.find:
         paths: "./kubernetes-config/"
