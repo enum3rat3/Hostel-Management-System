@@ -2,11 +2,11 @@
 - name: Apply Kubernetes YAML files locally
   hosts: localhost
   gather_facts: false
-  become: true
+  become_user: jaimin
   become_method: sudo
+  become_flags: "-u jaimin"
   vars:
-    ansible_become_user: jaimin
-    ansible_become_pass: "Jaimin@@0822"
+    ansible_become_password: "Jaimin@@0822"
   tasks:
     - name: Apply all Kubernetes YAML files in a directory
       ansible.builtin.find:
