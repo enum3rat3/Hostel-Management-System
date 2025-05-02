@@ -67,12 +67,5 @@ pipeline{
 	// }
     //  }
 
-	stage('Scan Kubernetes YAML Files with Trivy'){
-	 steps{
-	   sh '''
-	    trivy config ./kubernetes-config/	
-	   '''
-      }
-    }
   }
 }
