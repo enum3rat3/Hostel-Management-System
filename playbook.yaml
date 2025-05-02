@@ -4,4 +4,4 @@
   gather_facts: false
   tasks:
     - name: Check if kubectl is installed
-      command: kubectl version --client --short
+      command: kubectl version
