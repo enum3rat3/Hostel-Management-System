@@ -68,7 +68,7 @@ pipeline{
     //  }
      stage('Deployment using Ansible'){
 	   steps{
-            sh 'ansible-playbook playbook.yaml'
+            sh 'ansible-playbook playbook.yaml --become-user jaimin'
 	}
      }
   }

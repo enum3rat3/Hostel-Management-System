@@ -4,7 +4,6 @@
   gather_facts: false
   become: true
   vars:
-    ansible_become_user: jaimin
     ansible_become_password: "Jaimin@@0822"
   tasks:
     - name: Check current user
