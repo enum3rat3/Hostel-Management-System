@@ -2,6 +2,10 @@
 - name: Apply Kubernetes YAML files
   hosts: localhost
   gather_facts: false
+  become: true
+  become_method: sudo
+  vars:
+    ansible_become_pass: "Jaimin@@0822"
   tasks:
     - name: Check if kubectl is installed
       command: kubectl version --kubeconfig=/home/jaimin/.kube/config
