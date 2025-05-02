@@ -5,6 +5,7 @@
   become: true
   become_method: sudo
   vars:
+    ansible_become_user: jaimin
     ansible_become_pass: "Jaimin@@0822"
   tasks:
     - name: Check if kubectl is installed
