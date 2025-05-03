@@ -11,6 +11,13 @@ pipeline{
     }
 
     stages{
+	stage('checkout') {
+	  steps{
+	    script{
+		git branch: 'main', url:'https://github.com/enum3rat3/Hostel-Management-System.git'
+	    }
+	  }
+	}
 	// stage('OWASP Dependency-Check Vulnerabilities'){
 	//    steps{
 	//      sh '''

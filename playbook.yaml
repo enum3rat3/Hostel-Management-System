@@ -1,16 +1,15 @@
 ---
-- name: Run tasks as a different user
+- name: Ansible Playbook to deploy k8s yaml files
   hosts: localhost
-  gather_facts: no
-  become: yes
-  become_user: jaimin
-  vars:
-    ansible_become_password: "Jaimin@@0822"
+  gather_facts: false
   tasks:
-    - name: Check current user
-      command: whoami
-      register: whoami_output
-
-    - name: Print current user
-      debug:
-        msg: "Running as: {{ whoami_output.stdout }}"
+    - name: Apply all Kubernetes YAML files in a directory
+      ansible.builtin.find:
+        paths: "https://github.com/enum3rat3/Hostel-Management-System.git/kubernetes-config/"
+        patterns: "*.yaml"
+        recurse: yes
+      register: yaml_files
+    - name: Apply Kubernetes files using kubectl
+      ansible.builtin.shell: "kubectl apply -f {{ item.path }}"
+      loop: "{{ yaml_files.files }}"
+      when: yaml_files.matched > 0
