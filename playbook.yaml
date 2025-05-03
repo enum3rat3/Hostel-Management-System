@@ -5,7 +5,7 @@
   tasks:
     - name: Apply all Kubernetes YAML files in a directory
       ansible.builtin.find:
-        paths: "https://github.com/enum3rat3/Hostel-Management-System.git/kubernetes-config/"
+        paths: "./kubernetes-config/"
         patterns: "*.yaml"
         recurse: yes
       register: yaml_files
