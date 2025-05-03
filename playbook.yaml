@@ -10,6 +10,6 @@
         recurse: yes
       register: yaml_files
     - name: Apply Kubernetes files using kubectl
-      ansible.builtin.shell: "kubectl apply -f {{ item.path }}"
+      ansible.builtin.shell: "kubectl apply -f {{ item.path }} --validate=false"
       loop: "{{ yaml_files.files }}"
       when: yaml_files.matched > 0
