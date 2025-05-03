@@ -1,15 +1,15 @@
 ---
-- name: Apply Kubernetes YAML files locally
+- name: Run tasks as a different user
   hosts: localhost
-  gather_facts: false
-  become: true
+  become: yes
+  become_user: jaimin
   vars:
     ansible_become_password: "Jaimin@@0822"
   tasks:
     - name: Check current user
       command: whoami
-      register: current_user
+      register: whoami_output
 
-    - name: Display the current user
+    - name: Print current user
       debug:
-        var: current_user.stdout
+        msg: "Running as: {{ whoami_output.stdout }}"
