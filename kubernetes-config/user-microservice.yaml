@@ -24,6 +24,13 @@ spec:
               value: mysql-user # mysql user service name
           ports:
             - containerPort: 5002
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
 ---
 # User Microservice Service
 apiVersion: v1
