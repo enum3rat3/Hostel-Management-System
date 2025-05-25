@@ -47,7 +47,11 @@ spec:
           image: mysql:8
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-user-secret
+                  key: MYSQL_USER_PASSWORD
+
           ports:
             - containerPort: 3306
           volumeMounts:
@@ -68,3 +72,12 @@ spec:
     - port: 3306
   selector:
     app: mysql-user
+---
+# User database secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-user-secret
+type: Opaque
+data:
+  MYSQL_USER_PASSWORD: cm9vdAo=

@@ -46,7 +46,11 @@ spec:
           image: mysql:8
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-hostel-secret
+                  key: MYSQL_HOSTEL_PASSWORD
+
           ports:
             - containerPort: 3306
           volumeMounts:
@@ -67,3 +71,12 @@ spec:
     - port: 3306
   selector:
     app: mysql-hostel
+---
+# Hostel database secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-hostel-secret
+type: Opaque
+data:
+  MYSQL_HOSTEL_PASSWORD: cm9vdAo=
