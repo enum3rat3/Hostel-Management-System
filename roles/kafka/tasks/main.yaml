@@ -1,0 +1,5 @@
+---
+- name: Apply zookeeper manifest
+  command: kubectl apply -f {{ playbook_dir }}/kubernetes-config/zookeeper.yaml --kubeconfig ~/.kube/config
+- name: Apply kafka manifest
+  command: kubectl apply -f {{ playbook_dir }}/kubernetes-config/kafka.yaml --kubeconfig ~/.kube/config

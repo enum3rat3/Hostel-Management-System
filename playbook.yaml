@@ -2,14 +2,26 @@
 - name: Ansible Playbook to deploy k8s yaml files
   hosts: localhost
   gather_facts: false
-  tasks:
-    - name: Apply all Kubernetes YAML files in a directory
-      ansible.builtin.find:
-        paths: "./kubernetes-config/"
-        patterns: "*.yaml"
-        recurse: yes
-      register: yaml_files
-    - name: Apply Kubernetes files using kubectl
-      ansible.builtin.shell: "kubectl apply -f {{ item.path }} --kubeconfig ~/.kube/config"
-      loop: "{{ yaml_files.files }}"
-      when: yaml_files.matched > 0
+  roles:
+    - database
+    - kafka
+    - config-microservice
+    - user-microservice
+    - email-microservice
+    - hostel-microservice
+    - gateway-microservice
+    - frontend-microservice
+    - monitoring
+    - hpa
+
+  # tasks:
+    # - name: Apply all Kubernetes YAML files in a directory
+    #   ansible.builtin.find:
+    #     paths: "./kubernetes-config/"
+    #     patterns: "*.yaml"
+    #     recurse: yes
+    #   register: yaml_files
+    # - name: Apply Kubernetes files using kubectl
+    #   ansible.builtin.shell: "kubectl apply -f {{ item.path }} --kubeconfig ~/.kube/config"
+    #   loop: "{{ yaml_files.files }}"
+    #   when: yaml_files.matched > 0

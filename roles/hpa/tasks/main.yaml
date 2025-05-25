@@ -1,0 +1,3 @@
+---
+- name: Apply HPA manifest
+  command: kubectl apply -f {{ playbook_dir }}/kubernetes-config/hpa.yaml --kubeconfig ~/.kube/config

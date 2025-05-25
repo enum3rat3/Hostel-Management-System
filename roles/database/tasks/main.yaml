@@ -1,0 +1,5 @@
+---
+- name: Apply user database manifest
+  command: kubectl apply -f {{ playbook_dir }}/kubernetes-config/mysql-user.yaml --kubeconfig ~/.kube/config
+- name: Apply hostel database manifest
+  command: kubectl apply -f {{ playbook_dir }}/kubernetes-config/mysql-hostel.yaml --kubeconfig ~/.kube/config
