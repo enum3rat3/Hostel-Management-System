@@ -67,7 +67,7 @@ The **Hostel Management System** is a microservices-based application designed t
 ---
 
 ## How to Run the Project
-### Prerequisites
+### Prerequisites 
 - Docker
 - Kubernetes (Minikube or any Kubernetes cluster)
 - Node.js and npm (for frontend development)
